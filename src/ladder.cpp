@@ -81,14 +81,14 @@ vector<string> generate_word_ladder(const string &begin_word, const string &end_
         {
             if(!visited.count(word) && is_adjacent(last_word, word))
             {
-                auto newLadder = current_path;
+                auto newLadder = curr;
                 newLadder.push_back(word);
                 visited.insert(word);
 
-                if(word == end_word)
+                if(word == last_word)
                 return newLadder;
 
-                ladder_queue.push(newLadder);
+                ladder_queue.push(new_path);
             }
 
         }
@@ -98,6 +98,23 @@ vector<string> generate_word_ladder(const string &begin_word, const string &end_
     }
 
     return { };
+}
+
+void load_words(set<string> &word_list, const string &file_name)
+{
+    ifstream in(file_name);
+    string s;
+    if(!in.is_open()) return;
+
+    while(true)
+    {
+        if(!getline(in, s)) break;
+
+        if(!s.empty()) word_list.insert(s);
+    }
+
+    in.close();
+
 }
 
 void load_words(set<string> &word_list, const string &file_name)
