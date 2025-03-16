@@ -81,14 +81,14 @@ vector<string> generate_word_ladder(const string &begin_word, const string &end_
         {
             if(!visited.count(word) && is_adjacent(last_word, word))
             {
-                auto newLadder = curr;
+                auto newLadder = current_path;
                 newLadder.push_back(word);
                 visited.insert(word);
 
-                if(word == last_word)
+                if(word == end_word)
                 return newLadder;
 
-                ladder_queue.push(new_path);
+                ladder_queue.push(newLadder);
             }
 
         }
