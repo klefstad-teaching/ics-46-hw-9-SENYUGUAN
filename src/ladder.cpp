@@ -9,7 +9,7 @@ void error(string word1, string word2, string msg)
 bool partCheck(const string & s1, const string & s2)
 {
     int diff = 0;
-    for(int i = 0; i < s1.size(); ++i)
+    for(size_t i = 0; i < s1.size(); ++i)
         if(s1[i] != s2[i] && ++diff > 1) return false;
             
     return diff == 1;
@@ -43,7 +43,7 @@ bool edit_distance_within(const std::string &str1, const std::string &str2, int 
 {
     int length1 = str1.size();
     int length2 = str2.size();
-    int count = 0;
+
     if(abs(length1 - length2) > d) return false;
 
     if(length1 == length2)
@@ -81,14 +81,14 @@ vector<string> generate_word_ladder(const string &begin_word, const string &end_
         {
             if(!visited.count(word) && is_adjacent(last_word, word))
             {
-                auto newLadder = curr;
+                auto newLadder = current_path;
                 newLadder.push_back(word);
                 visited.insert(word);
 
-                if(word == last_word)
+                if(word == end_word)
                 return newLadder;
 
-                ladder_queue.push(new_path);
+                ladder_queue.push(newLadder);
             }
 
         }
