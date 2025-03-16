@@ -117,22 +117,6 @@ void load_words(set<string> &word_list, const string &file_name)
 
 }
 
-void load_words(set<string> &word_list, const string &file_name)
-{
-    ifstream in(file_name);
-    string s;
-    if(!in.is_open()) return;
-
-    while(true)
-    {
-        if(!getline(in, s)) break;
-
-        if(!s.empty()) word_list.insert(s);
-    }
-
-    in.close();
-
-}
 
 void print_word_ladder(const vector<string> &ladder)
 {
