@@ -2,10 +2,10 @@
 
 int main(int argc, char* argv[])
 {
-    if (argc < 2) {
-        cerr << argv[0] << " graphfile\n";
-        return 1;
-    }
+    cout << "Enter graph file name: ";
+    string filename;
+    cin >> filename;
+    
     Graph G;
     file_to_graph(argv[1], G);
 
